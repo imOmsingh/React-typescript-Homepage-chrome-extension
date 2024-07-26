@@ -8,8 +8,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
-
-const API_KEY = "sk-None-4ybnqgptkHBHMWVe3JSRT3BlbkFJ9FOna6aaP8QBeKAT9zFQ";
+import { processMessageToChatGPT } from "../../utils/api";
 
 const ChatBox = () => {
   const [messages, setMessages] = useState<any>([
@@ -46,32 +45,6 @@ const ChatBox = () => {
       setIsTyping(false);
     }
   };
-
-  async function processMessageToChatGPT(chatMessages) {
-    const apiMessages = chatMessages.map((messageObject) => {
-      const role = messageObject.sender === "ChatGPT" ? "assistant" : "user";
-      return { role, content: messageObject.message };
-    });
-
-    const apiRequestBody = {
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "system", content: "I'm a Student using ChatGPT for learning" },
-        ...apiMessages,
-      ],
-    };
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(apiRequestBody),
-    });
-
-    return response.json();
-  }
 
   return (
     <div className="App">

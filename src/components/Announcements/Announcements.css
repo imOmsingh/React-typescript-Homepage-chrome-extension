@@ -1,0 +1,22 @@
+.boardBody {
+  background-color: #faee7e;
+  width: 440px;
+  height: 140px;
+  border-radius: 30px;
+  padding: 10px;
+  overflow: scroll;
+  margin-bottom: 20px;
+}
+
+.bigHeading {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 30px;
+  /* border-bottom: 1px solid black; */
+}
+.listItem {
+  font-weight: 300;
+  font-size: 18px;
+  margin-bottom: 10px;
+}

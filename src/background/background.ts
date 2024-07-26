@@ -1,9 +1,11 @@
+import { setStoredCities, setStoredOptions } from "../utils/storage";
+
 // TODO: background script
-chrome.runtime.onMessage.addListener((msg, sender, res) => {
-  console.log(msg);
-  console.log(sender);
-  res("from the back");
-  // TODO: on installed function
+chrome.runtime.onInstalled.addListener(() => {
+  setStoredCities([]);
+  setStoredOptions({
+    tempScale: "metric",
+  });
 });
 
 // console.log("background");
